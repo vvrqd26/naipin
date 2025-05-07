@@ -28,6 +28,7 @@ export async function addMilkHistoryToDb(volume, remarks) {
     }
     const transaction = db.transaction(["milk"], "readwrite");
     const store = transaction.objectStore("milk");
+    
     store.add({
         date: Date.now(),
         volume: volume,

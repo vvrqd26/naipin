@@ -13,13 +13,13 @@ export const setMilkVolume = (volume) => {
   useStore.setState({ currentMilkVolume: volume })
 }
 export const setRemarks = (remarks) => {
-  console.log("setRemarks", remarks)
   useStore.setState({ currentRemarks: remarks })
 }
-export const addMilkHistory = () => {
+export const addMilkHistory = (volume, remarks) => {
+  console.log('addMilkHistory参数:', { volume, remarks });
   addMilkHistoryToDb(
-    useStore.getState().currentMilkVolume,
-    useStore.getState().currentRemarks
+    volume,
+    remarks
   ).then(()=> {
     syncDb()
   })
@@ -28,6 +28,16 @@ export const removeMilkHistory = (id) => {
   removeMilkHistoryFromDb(id).then(()=> {
     syncDb()
   })
+}
+
+// 获取今日总奶量
+export const todayTotalMilkVolume = () => {
+  const today = new Date().toISOString().split('T')[0];
+  const todayMilkHistory = useStore.getState().milkHistory.filter((item) => {
+    const date = new Date(item.date).toISOString().split('T')[0];
+    return date === today;
+  });
+  return todayMilkHistory.reduce((acc, item) => acc + item.volume, 0);
 }
 
 export const lastMilkHistory = () => {
@@ -41,8 +51,8 @@ export const syncDb = () => {
     useStore.setState({ milkHistory });
     const last = milkHistory[milkHistory.length - 1]
     useStore.setState({
-      currentMilkVolume: last?.volume,
-      currentRemarks: last?.remarks,
+      currentMilkVolume: last?.volume ?? 0,
+      currentRemarks: last?.remarks ?? '母乳',
     })
   });
 }

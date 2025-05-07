@@ -1,5 +1,5 @@
 import moment from "moment"
-import { lastMilkHistory } from '../state'
+import { lastMilkHistory,todayTotalMilkVolume } from '../state'
 import { useState,useEffect } from "react"
 
 export default function LastMilk() {
@@ -30,9 +30,10 @@ export default function LastMilk() {
 
 
   return (
-    <div className='py-8 h-40px font-bold text-xl text-red  items-center justify-center text-center'>
+    <div className='py-8  font-bold text-xl text-red  items-center justify-center text-center'>
+      
       <div>当前时间:{
-        moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')}
+        moment(Date.now()).format('MM月DD日 HH:mm:ss')}
       </div>
       <div>        {
           lastMilkHistory ? (
@@ -40,7 +41,9 @@ export default function LastMilk() {
                {fromLastMilkHistory}
             </div>
           ):<></>
-        }</div>
+        }
+      </div>
+      <div>今日总奶量:{todayTotalMilkVolume()}ML</div>
     </div>
   )
 }

@@ -11,7 +11,7 @@ export default function MilkVolumeInput() {
   return <>
           <div className='flex items-center justify-around w-full h-40px mb-1em'>
           <button className='p-2' onClick={() => setCurrentMilkVolume(currentMilkVolume - 10)} >-10ml</button>
-          <input ref={inputRef} type="number" className='p-2 mx-2' placeholder='请输入奶量' defaultValue={currentMilkVolume} />
+          <input ref={inputRef} readOnly type="number" className='p-2 mx-2' placeholder='请输入奶量' defaultValue={currentMilkVolume} />
           <button className='p-2' onClick={() => setCurrentMilkVolume(currentMilkVolume + 10)} >+10ml</button>
         </div>
         <div className='w-full flex mb-1em'>

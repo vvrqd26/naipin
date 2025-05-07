@@ -35,7 +35,7 @@ export default function ModifyModal({id,volume,date,remarks,onClose}) {
       <div>
         <div className='flex items-center gap-4'>
           <button className='p-2' onClick={() => setCurrentVolume(currentVolume - 10)}>-10ml</button>
-          <input type="number" className='p-2' defaultValue={currentVolume} ref={volumeInput}/>
+          <input type="number" className='p-2' readOnly="true" defaultValue={currentVolume} ref={volumeInput}/>
           <button className='p-2' onClick={() => setCurrentVolume(currentVolume + 10)}>+10ml</button>
         </div>
       </div>

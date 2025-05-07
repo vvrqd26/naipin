@@ -15,7 +15,7 @@ function App() {
         <button onClick={() => {
             // 强制状态更新后再执行
             setTimeout(() => addMilkHistory(currentMilkVolume, currentRemarks), 0)
-        }} className='rounded-full w-200px h-200px bg-yellow-300 text-3xl'>
+        }} className='rounded-full w-80vw py-2 bg-yellow-300 text-3xl'>
           喂奶
         </button>
       </div>

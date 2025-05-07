@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { addMilkHistoryToDb } from "../db";
-import { getMilkHistoryFromDb, removeMilkHistoryFromDb } from "../db";
+import { getMilkHistoryFromDb, removeMilkHistoryFromDb,updateMilkHistoryToDb } from "../db";
 
 export const useStore = create(() => ({
   currentMilkVolume: 90,
@@ -22,6 +22,13 @@ export const addMilkHistory = (volume, remarks) => {
     remarks
   ).then(()=> {
     syncDb()
+  })
+}
+export const updateMilkHistory = (id, date,volume, remarks) => {
+  updateMilkHistoryToDb(id, date,volume, remarks).then(()=> {
+    syncDb()
+  }).catch((err) => {
+    console.log('updateMilkHistory err:', err);
   })
 }
 export const removeMilkHistory = (id) => {

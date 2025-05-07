@@ -43,6 +43,28 @@ export async function addMilkHistoryToDb(volume, remarks) {
     }
   })
 }
+export async function updateMilkHistoryToDb(id, date,volume, remarks) {
+  return new Promise((resolve,reject)=> {
+    if (!window.dbReady) {
+      return reject(new Error('Database not initialized yet'));
+    }
+    const transaction = db.transaction(["milk"], "readwrite");
+    const store = transaction.objectStore("milk");
+
+    store.put({
+        id: id,
+        date: date,
+        volume: volume,
+        remarks: remarks,
+    })
+    transaction.oncomplete = function () {
+        resolve()
+    }
+    transaction.onerror = function () {
+        reject()
+    }
+  })
+}
 
 export async function removeMilkHistoryFromDb(id) {
   return new Promise((resolve,reject)=> {

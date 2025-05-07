@@ -20,12 +20,13 @@ export default defineConfig({
       },
       manifest: {
         name: '奶瓶数据',
-        short_name: 'np',
+        short_name: '奶瓶数据',
         description: '奶瓶数据记录',
         start_url: '/',
         display: 'standalone',
         background_color: '#FDC7C7',
         theme_color: '#FDC7C7',
+
         icons:[
           {
             src: '/logo.png',

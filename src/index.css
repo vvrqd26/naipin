@@ -1,0 +1,29 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bggound-color: #FDC7C7;
+  --text-color: #000;
+  --link-text-color: #9272CC;
+  --btn-bg:rgb(253 ,224, 71 );
+}
+
+body {
+  margin: 0;
+  background-color: var(--bggound-color);
+  color: var(--text-color);
+  display: flex-column;
+}
+
+.link,.primary-text {
+  color: var(--link-text-color);
+  text-decoration: none;
+}
+button {
+  background-color: var(--btn-bg);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.1s;
+  &:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+  }
+}
+

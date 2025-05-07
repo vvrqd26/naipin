@@ -19,9 +19,20 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
       manifest: {
-        name: 'naipindata',
+        name: '奶瓶数据',
         short_name: 'np',
         description: '奶瓶数据记录',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#FDC7C7',
+        theme_color: '#FDC7C7',
+        icons:[
+          {
+            src: '/logo.png',
+            sizes: '192x192',
+            type: 'image/png'
+          }
+        ]
       }
     })
   ],

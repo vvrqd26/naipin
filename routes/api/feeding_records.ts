@@ -21,12 +21,12 @@ export const handler: Handlers<FeedingRecord[] | []> = {
 
     const sortedResult = result.sort((a, b) => b.date - a.date);
     // 删除多余的记录
-    if (sortedResult.length > maxCount) {
-      const ids = sortedResult.slice(maxCount).map((record) => record.id);
-      ids.forEach((id) => {
-        kv.delete(["feeding_records", id]);
-      });
-    }
+    // if (sortedResult.length > maxCount) {
+    //   const ids = sortedResult.slice(maxCount).map((record) => record.id);
+    //   ids.forEach((id) => {
+    //     kv.delete(["feeding_records", id]);
+    //   });
+    // }
 
     return ok(sortedResult.slice(0, maxCount));
   },

@@ -66,11 +66,11 @@ export function ModifyFeedingRecordModal(
             onClick={() => {
               if (volumeInput.current) {
                 volumeInput.current.value =
-                  (parseInt(volumeInput.current.value) + 10).toString();
+                  (parseInt(volumeInput.current.value) - 10).toString();
               }
             }}
           >
-            +10ml
+            -10ml
           </button>
           <input
             className="flex-1 p-2 border-x border-black"
@@ -78,7 +78,18 @@ export function ModifyFeedingRecordModal(
             placeholder="请输入喂养量(ml)"
             ref={volumeInput}
           />
-          <button type="button" className="btn p-2 ">-10ml</button>
+          <button
+            type="button"
+            className="btn p-2 "
+            onClick={() => {
+              if (volumeInput.current) {
+                volumeInput.current.value =
+                  (parseInt(volumeInput.current.value) + 10).toString();
+              }
+            }}
+          >
+            +10ml
+          </button>
         </div>
         <div className="flex justify-between">
           {[30, 60, 90, 120, 150, 180].map((item) => {
